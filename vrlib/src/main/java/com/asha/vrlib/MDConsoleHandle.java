@@ -12,5 +12,7 @@ public class MDConsoleHandle {
 
     public MDConsoleHandle(Context context) {
         mHandleImage = new ImageView(context);
+
+        mHandleImage.setImageResource(R.drawable.Soccerball);
     }
 }
