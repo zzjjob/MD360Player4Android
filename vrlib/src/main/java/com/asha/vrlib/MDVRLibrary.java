@@ -40,6 +40,8 @@ public class MDVRLibrary {
     public static final int INTERACTIVE_MODE_MOTION = 1;
     public static final int INTERACTIVE_MODE_TOUCH = 2;
     public static final int INTERACTIVE_MODE_MOTION_WITH_TOUCH = 3;
+    public static final int INTERACTIVE_MODE_HANDLE = 4;
+    public static final int INTERACTIVE_MODE_MOTION_WITH_HANDLE = 5;
 
     // display mode
     public static final int DISPLAY_MODE_NORMAL = 101;
@@ -162,6 +164,8 @@ public class MDVRLibrary {
      * {@link #INTERACTIVE_MODE_MOTION}
      * {@link #INTERACTIVE_MODE_TOUCH}
      * {@link #INTERACTIVE_MODE_MOTION_WITH_TOUCH}
+     * {@link #INTERACTIVE_MODE_HANDLE}
+     * {@link #INTERACTIVE_MODE_MOTION_WITH_HANDLE}
      */
     public void switchInteractiveMode(Activity activity, int mode){
         mInteractiveModeManager.switchMode(activity,mode);

@@ -48,8 +48,10 @@ public class InteractiveModeManager extends ModeManager<AbsInteractiveStrategy> 
             case MDVRLibrary.INTERACTIVE_MODE_MOTION:
                 return new MotionStrategy(mParams);
             case MDVRLibrary.INTERACTIVE_MODE_MOTION_WITH_TOUCH:
+            case MDVRLibrary.INTERACTIVE_MODE_MOTION_WITH_HANDLE:
                 return new MotionWithTouchStrategy(mParams);
             case MDVRLibrary.INTERACTIVE_MODE_TOUCH:
+            case MDVRLibrary.INTERACTIVE_MODE_HANDLE:
             default:
                 return new TouchStrategy(mParams);
         }
