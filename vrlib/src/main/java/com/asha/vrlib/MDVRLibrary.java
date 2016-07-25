@@ -9,6 +9,8 @@ import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Toast;
 
 import com.asha.vrlib.common.GLUtil;
@@ -67,6 +69,7 @@ public class MDVRLibrary {
     private MDPluginManager mPluginManager;
     private MDGLScreenWrapper mScreenWrapper;
     private MDTouchHelper mTouchHelper;
+    private MDConsoleHandle mConsoleHandle;
 
     private MDVRLibrary(Builder builder) {
 
@@ -78,6 +81,9 @@ public class MDVRLibrary {
 
         // init glSurfaceViews
         initOpenGL(builder.activity, builder.screenWrapper);
+
+        // init control handle
+        initHandle(builder);
 
         mTouchHelper = new MDTouchHelper(builder.activity);
         mTouchHelper.setPinchEnabled(builder.pinchEnabled);
@@ -148,6 +154,26 @@ public class MDVRLibrary {
         } else {
             this.mScreenWrapper.getView().setVisibility(View.GONE);
             Toast.makeText(context, "OpenGLES2 not supported.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void initHandle(Builder builder) {
+        if (mScreenWrapper == null)
+            return ;
+
+        ViewParent parent = mScreenWrapper.getView().getParent();
+
+        while (parent != null) {
+            if (parent instanceof ViewGroup)
+                break;
+            else
+                parent = parent.getParent();
+        };
+
+        if (parent != null) {
+            mConsoleHandle = new MDConsoleHandle(builder.activity);
+
+            mConsoleHandle.attach((ViewGroup) parent);
         }
     }
 
