@@ -15,11 +15,12 @@ public class MDConsoleHandle {
     private FrameLayout.LayoutParams mLayoutParams;
 
     public MDConsoleHandle(Context context) {
-        mLayoutParams = new FrameLayout.LayoutParams(-1, -1, Gravity.CENTER);
+        mLayoutParams = new FrameLayout.LayoutParams(200, 200, Gravity.RIGHT | Gravity.BOTTOM);
 
         mHandleImage = new ImageView(context);
 
         mHandleImage.setImageResource(R.drawable.soccerball);
+        mHandleImage.setAlpha(50);
     }
 
     public void attach(ViewGroup v) {
